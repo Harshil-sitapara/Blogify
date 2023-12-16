@@ -9,7 +9,7 @@ import checkForAuthenticationCookie from "./middlewares/auth.js";
 import Blog from "./models/blog.js";
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 
 // mongodb connection
 mongoose.connect(process.env.MONGO_URL).then(() => {
