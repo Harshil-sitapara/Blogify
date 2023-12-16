@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+    <title>SIGN-IN</title>
+  </head>
+  <style>
+    body{
+        background-color: black;
+        color: white;
+    }
+  </style>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="container mt-3">
+        <h3>Sign-in </h3>
+      <form action="/user/signin" method="POST">
+        <div class="mb-3">
+          <label for="email" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            aria-describedby="email"
+            placeholder="example@example.com"
+            name="email"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Set your password"
+            name="password"
+          />
+        </div>
+        <p>New to Blogify? <a href="/user/signup">Create account</a></p>
+        <button type="submit" class="btn btn-primary">SIGN-IN</button>
+      </form>
+    </div>
+    <%- include('./partials/script.ejs') %>
+  </body>
+</html>

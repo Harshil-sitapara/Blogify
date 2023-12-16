@@ -1,0 +1,26 @@
+import mongoose, { Schema, model } from "mongoose";
+
+const blogSchem = new Schema(
+  {
+    title: {
+      type: String,
+      require: true,
+    },
+    body: {
+      type: String,
+      require: true,
+    },
+    coverImageURL: {
+      type: String,
+    },
+    createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
+  },
+  { timestamps: true }
+);
+
+const Blog = model("blog", blogSchem);
+
+export default Blog;
