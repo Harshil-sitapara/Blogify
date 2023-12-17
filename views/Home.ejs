@@ -5,8 +5,7 @@
     <title>Home page</title>
     <style>
       body{
-        background-color: black;
-        color: white;
+        background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
     }
       .card-img-top {
         width: 100%; 
@@ -19,6 +18,9 @@
         flex-direction: column;
         height: 100%; 
         position: relative;
+        background: rgb(177 177 177 / 35%);
+        backdrop-filter: blur(3px);
+        border: 1px solid rgba(7,7,7,0.175);
       }
       .card-body {
         padding-bottom: 70px; 
@@ -27,6 +29,15 @@
         position: absolute;
         bottom: 10px;
         left: 10px;
+      }
+      .timeText {
+        position: absolute;
+        bottom: 3px;
+        right: 12px;
+      }
+      .card:hover{
+        transition: 0.2s;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
       }
     </style>
   </head>
@@ -40,6 +51,11 @@
             <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="Blog Image" />
             <div class="card-body">
               <h5 class="card-title"><%= blog.title %></h5>
+              <p class="card-title timeText"><%= blog.createdAt.toLocaleString('en-US', { 
+                weekday: 'short', 
+                month: 'short', 
+                day: 'numeric', 
+              }) %></p>
               <a href="/blog/<%= blog._id %>" class="btn btn-primary viewBtn">View</a>
             </div>
           </div>
