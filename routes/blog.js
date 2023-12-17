@@ -1,6 +1,5 @@
 import express from "express";
 import multer from "multer";
-import path,{dirname} from "path";
 import { fileURLToPath } from 'url';
 import Blog from "../models/blog.js";
 import Comment from "../models/comment.js";
@@ -10,7 +9,6 @@ const router = express.Router();
 // here, we make storage to upload file in uploads folter using multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
     cb(null,  "./public/uploads");
   },
   filename: function (req, file, cb) {
