@@ -6,7 +6,7 @@ import Comment from "../models/comment.js";
 
 const router = express.Router();
 
-// here, we make storage to upload file in uploads folter using multer
+// here, we make storage to upload file in uploads folder using multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null,  "./public/uploads");

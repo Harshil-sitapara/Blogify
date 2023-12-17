@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <%- include('./partials/head.ejs') %>
-    <title>Home page</title>
+    <title>Blogify - Home</title>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Mukta:wght@500&family=Mulish:wght@800&family=Roboto&display=swap');
       body{
         background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
     }
@@ -21,9 +22,14 @@
         background: rgb(177 177 177 / 35%);
         backdrop-filter: blur(3px);
         border: 1px solid rgba(7,7,7,0.175);
+        cursor: default;
+        font-family: 'Baloo Bhai 2', sans-serif;
       }
       .card-body {
         padding-bottom: 70px; 
+      }
+      .card-body h5{
+       font-family: 'Mulish', sans-serif;
       }
       .viewBtn {
         position: absolute;
@@ -39,6 +45,10 @@
         transition: 0.2s;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
       }
+      .allCardLink{
+        text-decoration: none;
+        color: black;
+      }
     </style>
   </head>
   <body>
@@ -46,9 +56,11 @@
     <div class="container mt-4">
     <div class="row">
       <% locals.blogs.forEach(blog => { %>
+      
         <div class="col-md-4 mb-4">
+          <a href="/blog/<%= blog._id %>" class="allCardLink">
           <div class="card" style="width: 90%;">
-            <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="Blog Image" />
+            <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="Blog Image" loading="lazy" />
             <div class="card-body">
               <h5 class="card-title"><%= blog.title %></h5>
               <p class="card-title timeText"><%= blog.createdAt.toLocaleString('en-US', { 
@@ -59,6 +71,7 @@
               <a href="/blog/<%= blog._id %>" class="btn btn-primary viewBtn">View</a>
             </div>
           </div>
+        </a>
         </div>
       <% }) %>
     </div>
