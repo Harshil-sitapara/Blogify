@@ -11,7 +11,7 @@ const router = express.Router();
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    cb(null, path.join(__dirname, "../public/uploads"));
+    cb(null,  "./public/uploads");
   },
   filename: function (req, file, cb) {
     const fileName = `${Date.now()}-${file.originalname}`;

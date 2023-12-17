@@ -1,8 +1,6 @@
 import 'dotenv/config'
 import express from "express";
 import path from "path";
-import { fileURLToPath } from 'url';
-
 import userRouter from "./routes/user.js";
 import blogRouter from "./routes/blog.js";
 import mongoose from "mongoose";
@@ -18,12 +16,9 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
   console.log("Database connected!");
 });
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 app.set("view engine", "ejs");
-// app.set("views", path.join(__dirname, "views"));
-app.set("views", path.join(__dirname, "views"));
+app.set("views","./views");
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
