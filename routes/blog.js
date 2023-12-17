@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
   // in the below, populate method automaticaly added current user's object in createdBy, Bcuz we added ref of user in blog model
   const blog = await Blog.findOne({ _id: req.params.id }).populate("createdBy");
   const comments = await Comment.find({blogId:req.params.id}).populate("commentedBy");
-  res.render("blog", {
+  res.render("Blog", {
     user: req.user,
     blog: blog,
     comments
