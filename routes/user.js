@@ -4,11 +4,11 @@ import User from "../models/user.js";
 const router = express.Router();
 
 router.get("/signin", (req, res) => {
-  return res.render("signin");
+  return res.render("Signin");
 });
 
 router.get("/signup", (req, res) => {
-  return res.render("signup", {
+  return res.render("Signup", {
     user: req.user,
   });
 });
@@ -20,7 +20,7 @@ router.post("/signup", async (req, res) => {
     email,
     password,
   });
-  res.render("signin");
+  res.render("Signin");
 });
 
 router.post("/signin", async (req, res) => {
@@ -29,7 +29,7 @@ router.post("/signin", async (req, res) => {
     const token = await User.matchPasswordAndGenerateToken(email, password);
     return res.cookie("token", token).redirect("/");
   } catch (err) {
-    return res.render("signin", {
+    return res.render("Signin", {
       error: err,
     });
   }
