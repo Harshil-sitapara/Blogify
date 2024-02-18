@@ -35,7 +35,7 @@ const userSchema = new Schema(
 
 //
 
-// Hasing password before save
+// Hashing password before save
 userSchema.pre("save", function (next) {
   const user = this; // here 'this' is pointing to the current user
 
@@ -49,7 +49,7 @@ userSchema.pre("save", function (next) {
     .digest("hex");
 
   this.salt = salt;
-  this.password = hashedPassword; //here we are replacing orignal password with hashed password
+  this.password = hashedPassword; //here we are replacing original password with hashed password
   next();
 });
 
@@ -57,15 +57,15 @@ userSchema.pre("save", function (next) {
 userSchema.static("matchPasswordAndGenerateToken", async function (email, password) {
   const user = await this.findOne({ email });
   if (!user) throw new Error("User not found");
-
   const salt = user.salt;
   const hashedPassword = user.password;
-
   // now hash the user given password
   const userProvidedHash = createHmac("sha256", salt)
     .update(password)
     .digest("hex");
 
+    console.log("hashedPassword",hashedPassword)
+    console.log("userProvidedHash",userProvidedHash)
   if (hashedPassword !== userProvidedHash)
     throw new Error("Incorrect password");
 
