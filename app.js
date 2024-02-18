@@ -1,4 +1,4 @@
-import 'dotenv/config'
+import "dotenv/config";
 import express from "express";
 import path from "path";
 import userRouter from "./routes/user.js";
@@ -16,9 +16,8 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
   console.log("Database connected!");
 });
 
-
 app.set("view engine", "ejs");
-app.set("views","./views");
+app.set("views", "./views");
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
